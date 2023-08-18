@@ -224,6 +224,7 @@ class NeoBaseRecordingExtractor(_NeoBaseExtractor, BaseRecording):
 
         # need neo 0.10.0
         signal_channels = self.neo_reader.header["signal_channels"]
+        signal_channels= np.sort(signal_channels) ###fix problem with unmaching channels ids (it was just the order) when attempted to concactenate different steams from the same recording
         mask = signal_channels["stream_id"] == stream_id
         signal_channels = signal_channels[mask]
 
